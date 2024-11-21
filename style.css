@@ -5,7 +5,7 @@
   font-display: block; /* フォントが読み込まれるまで代替フォントを出さない */
 }
 
-* {
+:root {
   margin: 0;
   padding: 0;
   font-family: Xim-Sans;
@@ -30,9 +30,26 @@ h1 {
 .mode-btn {
   width: fit-content;
   margin: 0 auto;
-  font-size: 1.3rem;
+  padding: 8px 32px;
+  color: #fff;
+  background-color: #268bde;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .mode-btn:not(:first-of-type) {
-  margin-top: 8px;
+  margin-top: 12px;
+}
+
+@media (any-hover: hover) {
+  .mode-btn:hover {
+    background-color: #005bb5;
+  }
+}
+@media (any-hover: none) {
+  .mode-btn:active {
+    background-color: #005bb5;
+  }
 }
