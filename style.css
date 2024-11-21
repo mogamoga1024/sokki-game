@@ -6,8 +6,33 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
   font-family: Xim-Sans;
-  font-size: 48px;
+  font-size: 36px;
 }
 
+h1 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
 
+.description {
+  width: fit-content;
+  margin: 1rem auto 0;
+}
+
+#mode-btn-container {
+  margin-top: 1rem;
+}
+
+.mode-btn {
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.3rem;
+}
+
+.mode-btn:not(:first-of-type) {
+  margin-top: 8px;
+}
