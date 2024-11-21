@@ -1,0 +1,11 @@
+
+@font-face {
+	font-family: "Xim-Sans";
+	src: url(./Xim-Sans-Handwritten.ttf);
+}
+
+* {
+  font-family: Xim-Sans;
+}
+
+
