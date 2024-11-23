@@ -43,8 +43,10 @@
 
       <div class="sentakusi-container">
         <template v-for="(s, index) in sentakusiList">
-          <input type="radio" name="sentakusi" :id="`sentakusi${index}`">
-          <label :for="`sentakusi${index}`" v-html="s.sokki" @click="onClickSentakusi(s, $event)"></label>
+          <div class="sentakusi"
+               :class="{selected: selectedSentakusi?.sokki === s.sokki}"
+               v-html="s.sokki"
+               @click="onClickSentakusi(s)"></div>
         </template>
       </div>
     </template>

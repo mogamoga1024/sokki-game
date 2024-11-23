@@ -8,11 +8,12 @@ const app = {
             sokkiTable: [],
             hiraList: [],
 
-            mondai: ["な", "ま", "こ"],
+            mondai: [],
             sintyoku: [],
             message: "選んでね🤔",
-            
-            sentakusiList: [],
+
+            selectedSentakusi: null,
+            selectedSentakusiIndex: -1,
         }
     },
     created() {
@@ -20,7 +21,7 @@ const app = {
         this.hiraList = 平仮名一覧(this.needぱ行, this.needきゃ系);
 
         // debug stato
-        this.initSentakusiList();
+        this.initMondai();
         // debug end
     },
     methods: {
@@ -33,13 +34,21 @@ const app = {
             // todo
         },
 
-        onClickSentakusi(sentakusi, e) {
+        onClickSentakusi(sentakusi) {
             if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
+                this.selectedSentakusi = null;
                 this.message = "OK😆";
                 this.sintyoku.push(sentakusi.sokki);
-                this.initSentakusiList();
+                
+                if (this.sintyoku.length === this.mondai.length) {
+                    this.initMondai();
+                }
+                else {
+                    this.initSentakusiList();
+                }
             }
             else {
+                this.selectedSentakusi = sentakusi;
                 this.message = "違う…😢";
             }
         },
@@ -86,11 +95,20 @@ const app = {
                 this.sokkiTable.push(sokkiRow);
             }
         },
+        initMondai() {
+            this.message = "選んでね🤔";
+            this.sintyoku = [];
+            
+            // todo
+            this.mondai = ["な", "ま", "こ"];
+            
+            this.initSentakusiList();
+        },
         initSentakusiList() {
             const sentakusiList = [];
 
             const hira = this.mondai[this.sintyoku.length];
-            const sokki = 速記記号一覧[hira];
+            const sokki = 速記記号一覧[hira] ?? "";
             sentakusiList.push({hira, sokki});
 
             while (sentakusiList.length < 4) {
