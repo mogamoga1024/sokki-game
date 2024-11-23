@@ -1,8 +1,10 @@
 
+let canClickSentakusi = true;
+
 const app = {
     data() {
         return {
-            mode: "kaku", // top, kaku, yomu
+            mode: "top", // top, kaku, yomu
             needぱ行: true, // todo
             needきゃ系: true, // todo
             sokkiTable: [],
@@ -34,16 +36,27 @@ const app = {
         },
 
         onClickSentakusi(sentakusi) {
+            if (!canClickSentakusi) {
+                return;
+            }
             if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
                 this.selectedSentakusi = null;
                 this.message = "正解！😆";
                 this.sintyoku.push(sentakusi.sokki);
                 
+                canClickSentakusi = false;
                 if (this.sintyoku.length === this.mondai.length) {
-                    this.initMondai();
+                    setTimeout(() => {
+                        this.initMondai();
+                        canClickSentakusi = true;
+                    }, 800);
                 }
                 else {
                     this.initSentakusiList();
+                    // 連打防止
+                    setTimeout(() => {
+                        canClickSentakusi = true;
+                    }, 200);
                 }
             }
             else {
@@ -98,8 +111,7 @@ const app = {
             this.message = "選んでね🤔";
             this.sintyoku = [];
             
-            // todo
-            this.mondai = ["な", "ま", "こ"];
+            this.mondai = 問題生成(this.needぱ行, this.needきゃ系);
             
             this.initSentakusiList();
         },

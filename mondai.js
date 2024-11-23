@@ -87,7 +87,22 @@ const 問題ぴゃ行 = [
     "ぴゅあ",
 ];
 
-function 問題(needぱ行 = true, needきゃ系 = true) {
-    
+function 問題生成(needぱ行 = true, needきゃ系 = true) {
+    // todo
+
+    const text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+    const mondai = [];
+
+    for (let i = 0; i < text.length; i++) {
+        // 最後のindexではない かつ 次の文字が「ゃゅょ」の場合
+        if (i < text.length - 1 && /^(ゃ|ゅ|ょ)$/.test(text[i + 1])) {
+            mondai.push(text[i] + text[i + 1]);
+            i++; // ひとつ進める
+            continue;
+        }
+        mondai.push(text[i]);
+    }
+
+    return mondai;
 }
 
