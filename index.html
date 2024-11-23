@@ -40,6 +40,23 @@
       <div id="mondai">なまこ</div>
       <div id="sintyoku">???</div>
       <div id="message">選んでね🤔</div>
+
+      <div class="sentakusi-container">
+        <input type="radio" name="sentakusi" :id="'sentakusi1'" value="1">
+        <label :for="'sentakusi1'">1</label>
+        
+        <input type="radio" name="sentakusi" id="sentakusi2" value="2">
+        <label for="sentakusi2">2</label>
+        
+        <input type="radio" name="sentakusi" id="sentakusi3" value="3">
+        <label for="sentakusi3">3</label>
+        
+        <input type="radio" name="sentakusi" id="sentakusi4" value="4">
+        <label for="sentakusi4">4</label>
+        
+        <input type="radio" name="sentakusi" id="sentakusi5" value="5">
+        <label for="sentakusi5">5</label>
+      </div>
     </template>
     
     <template v-else-if="mode === 'yomu'">
