@@ -7,6 +7,9 @@ const app = {
             needきゃ系: true, // todo
             sokkiTable: [],
             hiraList: [],
+
+            mondai: "なまこ",
+            
             sentakusiList: [],
         }
     },
@@ -72,7 +75,7 @@ const app = {
         },
         initSentakusiList() {
             const sentakusiList = [];
-            while (sentakusiList.length < 5) {
+            while (sentakusiList.length < 4) {
                 const sentakusi = 速記記号一覧[this.hiraList[randomInt(this.hiraList.length)]];
                 if (!sentakusiList.includes(sentakusi)) {
                     sentakusiList.push(sentakusi);

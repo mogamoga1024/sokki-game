@@ -31,11 +31,11 @@
 }
 
 .sentakusi-container label {
-  width: 32px;
-  padding: 18px;
+  width: 80px;
+  padding: 26px 0;
   border: 2px solid #007bff;
   border-radius: 6px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
