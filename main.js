@@ -11,9 +11,8 @@ const app = {
             mondai: [],
             sintyoku: [],
             message: "選んでね🤔",
-
+            sentakusiList: [],
             selectedSentakusi: null,
-            selectedSentakusiIndex: -1,
         }
     },
     created() {
@@ -37,7 +36,7 @@ const app = {
         onClickSentakusi(sentakusi) {
             if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
                 this.selectedSentakusi = null;
-                this.message = "OK😆";
+                this.message = "正解！😆";
                 this.sintyoku.push(sentakusi.sokki);
                 
                 if (this.sintyoku.length === this.mondai.length) {
@@ -64,7 +63,7 @@ const app = {
                 ["ま", "み", "む", "め", "も"],
                 ["や", "", "ゆ", "", "よ"],
                 ["ら", "り", "る", "れ", "ろ"],
-                ["わ", "", "を", "", ""],
+                ["わ", "", "", "", ""],
                 ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
                 ["きゃ", "", "きゅ", "", "きょ"],
                 ["しゃ", "", "しゅ", "", "しょ"],
@@ -105,6 +104,7 @@ const app = {
             this.initSentakusiList();
         },
         initSentakusiList() {
+            this.selectedSentakusi = null;
             const sentakusiList = [];
 
             const hira = this.mondai[this.sintyoku.length];
