@@ -37,6 +37,7 @@ const app = {
             if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
                 this.message = "OK😆";
                 this.sintyoku.push(sentakusi.sokki);
+                this.initSentakusiList();
             }
             else {
                 this.message = "違う…😢";
