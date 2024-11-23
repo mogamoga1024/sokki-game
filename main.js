@@ -4,6 +4,7 @@ const app = {
         return {
             mode: "kaku", // top, kaku, yomu
             sokkiTable: [],
+            sentakusiList: [],
         }
     },
     created() {
@@ -17,7 +18,7 @@ const app = {
             ["ま", "み", "む", "め", "も"],
             ["や", "", "ゆ", "", "よ"],
             ["ら", "り", "る", "れ", "ろ"],
-            ["わ", "", "", "", ""],
+            ["わ", "", "を", "", ""],
             ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
             ["きゃ", "", "きゅ", "", "きょ"],
             ["しゃ", "", "しゅ", "", "しょ"],
@@ -51,7 +52,7 @@ const app = {
     methods: {
         onClickKaku() {
             this.mode = "kaku";
-            // todo
+            this.sentakusiList = [];
         },
         onClickYomu() {
             this.mode = "yomu";
