@@ -12,12 +12,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.min.js"></script>
 </head>
 <body>
-  <h1>遊んで学べる早稲田式速記ゲーム</h1>
   <div id="app" v-cloak>
+    <h1>遊んで学べる早稲田式速記ゲーム</h1>
     <div class="description">遊びたいモードを押してね☺</div>
     <div id="mode-btn-container">
-      <div class="mode-btn">書く！</div>
-      <div class="mode-btn">読む！</div>
+      <div class="mode-btn" @click="onClickKaku">書く！</div>
+      <div class="mode-btn" @click="onClickYomu">読む！</div>
     </div>
     <table id="sokki-table">
       <tr v-for="sokkiRow in sokkiTable">

@@ -48,7 +48,12 @@ const app = {
         }
     },
     methods: {
-        // todo
+        onClickKaku() {
+            // todo
+        },
+        onClickYomu() {
+            // todo
+        },
     }
 };
 
