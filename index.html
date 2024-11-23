@@ -38,13 +38,13 @@
 
     <template v-else-if="mode === 'kaku'">
       <div id="mondai">{{this.mondai.join("")}}</div>
-      <div id="sintyoku">???</div>
-      <div id="message">選んでね🤔</div>
+      <div id="sintyoku" v-html="this.sintyoku.join('') + '?'.repeat(this.mondai.length - this.sintyoku.length)"></div>
+      <div id="message">{{message}}</div>
 
       <div class="sentakusi-container">
         <template v-for="(s, index) in sentakusiList">
-          <input type="radio" name="sentakusi" :id="`sentakusi${index}`" value="1">
-          <label :for="`sentakusi${index}`" v-html="s.sokki" @click="onClickSentakusi(s.hira, $event)"></label>
+          <input type="radio" name="sentakusi" :id="`sentakusi${index}`">
+          <label :for="`sentakusi${index}`" v-html="s.sokki" @click="onClickSentakusi(s, $event)"></label>
         </template>
       </div>
     </template>

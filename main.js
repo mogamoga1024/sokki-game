@@ -10,6 +10,7 @@ const app = {
 
             mondai: ["な", "ま", "こ"],
             sintyoku: [],
+            message: "選んでね🤔",
             
             sentakusiList: [],
         }
@@ -32,8 +33,14 @@ const app = {
             // todo
         },
 
-        onClickSentakusi(hira, e) {
-            debugger
+        onClickSentakusi(sentakusi, e) {
+            if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
+                this.message = "OK😆";
+                this.sintyoku.push(sentakusi.sokki);
+            }
+            else {
+                this.message = "違う…😢";
+            }
         },
 
         initSokkiTable() {
