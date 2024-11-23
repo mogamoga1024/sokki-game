@@ -32,6 +32,10 @@ const app = {
             // todo
         },
 
+        onClickSentakusi(hira, e) {
+            debugger
+        },
+
         initSokkiTable() {
             const hiraTable = [
                 ["あ", "い", "う", "え", "お"],
@@ -79,12 +83,13 @@ const app = {
 
             const hira = this.mondai[this.sintyoku.length];
             const sokki = 速記記号一覧[hira];
-            sentakusiList.push(sokki);
+            sentakusiList.push({hira, sokki});
 
             while (sentakusiList.length < 4) {
-                const sentakusi = 速記記号一覧[this.hiraList[randomInt(this.hiraList.length)]];
-                if (!sentakusiList.includes(sentakusi)) {
-                    sentakusiList.push(sentakusi);
+                const hira = this.hiraList[randomInt(this.hiraList.length)];
+                const sokki = 速記記号一覧[hira];
+                if (!sentakusiList.includes(sokki)) {
+                    sentakusiList.push({hira, sokki});
                 }
             }
             this.sentakusiList = shuffle(sentakusiList);

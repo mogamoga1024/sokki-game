@@ -42,9 +42,9 @@
       <div id="message">選んでね🤔</div>
 
       <div class="sentakusi-container">
-        <template v-for="(sentakusi, index) in sentakusiList">
+        <template v-for="(s, index) in sentakusiList">
           <input type="radio" name="sentakusi" :id="`sentakusi${index}`" value="1">
-          <label :for="`sentakusi${index}`" v-html="sentakusi"></label>
+          <label :for="`sentakusi${index}`" v-html="s.sokki" @click="onClickSentakusi(s.hira, $event)"></label>
         </template>
       </div>
     </template>
