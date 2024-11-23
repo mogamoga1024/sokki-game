@@ -6,6 +6,7 @@
   <title>遊んで学べる早稲田式速記ゲーム</title>
   <meta name="description" content="早稲田式速記の学習用ゲーム">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
   <script>new ViewportExtra(375)</script>
   <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.min.js"></script>
@@ -20,13 +21,30 @@
     </div>
     <table id="sokki-table">
       <tr>
-        <td>あ</td>
-        <td>い</td>
-        <td>う</td>
-        <td>え</td>
-        <td>お</td>
+        <td>
+          <div class="hira">あ</div>
+          <div class="sokki">&#xF7A0;</div>
+        </td>
+        <td>
+          <div class="hira">い</div>
+          <div class="sokki">&#xF7A1;</div>
+        </td>
+        <td>
+          <div class="hira">う</div>
+          <div class="sokki">&#xF7A2;</div>
+        </td>
+        <td>
+          <div class="hira">え</div>
+          <div class="sokki">&#xF7A3;</div>
+        </td>
+        <td>
+          <div class="hira">お</div>
+          <div class="sokki">&#xF7A4;</div>
+        </td>
       </tr>
     </table>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>

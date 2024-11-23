@@ -62,8 +62,18 @@ h1 {
 #sokki-table {
   margin: 1rem auto 0;
   border-collapse: collapse;
+  text-align: center;
 }
 
-th, td {
+td {
+  width: 80px;
   border: 1px solid #666;
+}
+
+td .hira {
+  margin-top: 8px;
+}
+
+td .sokki {
+  font-size: 2rem;
 }
