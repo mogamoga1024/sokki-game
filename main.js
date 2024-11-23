@@ -8,7 +8,8 @@ const app = {
             sokkiTable: [],
             hiraList: [],
 
-            mondai: "なまこ",
+            mondai: ["な", "ま", "こ"],
+            sintyoku: [],
             
             sentakusiList: [],
         }
@@ -75,13 +76,18 @@ const app = {
         },
         initSentakusiList() {
             const sentakusiList = [];
+
+            const hira = this.mondai[this.sintyoku.length];
+            const sokki = 速記記号一覧[hira];
+            sentakusiList.push(sokki);
+
             while (sentakusiList.length < 4) {
                 const sentakusi = 速記記号一覧[this.hiraList[randomInt(this.hiraList.length)]];
                 if (!sentakusiList.includes(sentakusi)) {
                     sentakusiList.push(sentakusi);
                 }
             }
-            this.sentakusiList = sentakusiList;
+            this.sentakusiList = shuffle(sentakusiList);
         },
     }
 };
