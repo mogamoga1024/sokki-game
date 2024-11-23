@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>遊んで学べる早稲田式速記ゲーム</title>
   <meta name="description" content="早稲田式速記の学習用ゲーム">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="kaku.css">
   <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
   <script>new ViewportExtra(375)</script>
@@ -34,9 +35,11 @@
         </tr>
       </table>
     </template>
+
     <template v-else-if="mode === 'kaku'">
       書く！TODO
     </template>
+    
     <template v-else-if="mode === 'yomu'">
       読む！TODO
     </template>
