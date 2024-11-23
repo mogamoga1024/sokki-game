@@ -48,7 +48,7 @@ const app = {
             }
             else {
                 this.selectedSentakusi = sentakusi;
-                this.message = "違う…😢";
+                this.message = `それは「${sentakusi.hira}」…😢`;
             }
         },
 
@@ -114,7 +114,7 @@ const app = {
             while (sentakusiList.length < 4) {
                 const hira = this.hiraList[randomInt(this.hiraList.length)];
                 const sokki = 速記記号一覧[hira];
-                if (!sentakusiList.includes(sokki)) {
+                if (sentakusiList.every(s => s.sokki !== sokki)) {
                     sentakusiList.push({hira, sokki});
                 }
             }
