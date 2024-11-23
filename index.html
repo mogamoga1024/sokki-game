@@ -13,25 +13,33 @@
 </head>
 <body>
   <div id="app" v-cloak>
-    <h1>遊んで学べる早稲田式速記ゲーム</h1>
-    <div class="description">遊びたいモードを押してね☺</div>
-    <div id="mode-btn-container">
-      <div class="mode-btn" @click="onClickKaku">書く！</div>
-      <div class="mode-btn" @click="onClickYomu">読む！</div>
-    </div>
-    <table id="sokki-table">
-      <tr v-for="sokkiRow in sokkiTable">
-        <td v-for="sokki in sokkiRow">
-          <div class="hira">{{sokki.hira}}</div>
-          <div class="sokki"
-               :class="{
-                 'pad-top': sokki.pad === 'top',
-                 'pad-bottom': sokki.pad === 'bottom'
-               }"
-               v-html="sokki.sokki"></div>
-        </td>
-      </tr>
-    </table>
+    <template v-if="mode === 'top'">
+      <h1>遊んで学べる早稲田式速記ゲーム</h1>
+      <div class="description">遊びたいモードを押してね☺</div>
+      <div id="mode-btn-container">
+        <div class="mode-btn" @click="onClickKaku">書く！</div>
+        <div class="mode-btn" @click="onClickYomu">読む！</div>
+      </div>
+      <table id="sokki-table">
+        <tr v-for="sokkiRow in sokkiTable">
+          <td v-for="sokki in sokkiRow">
+            <div class="hira">{{sokki.hira}}</div>
+            <div class="sokki"
+                :class="{
+                  'pad-top': sokki.pad === 'top',
+                  'pad-bottom': sokki.pad === 'bottom'
+                }"
+                v-html="sokki.sokki"></div>
+          </td>
+        </tr>
+      </table>
+    </template>
+    <template v-else-if="mode === 'kaku'">
+      書く！TODO
+    </template>
+    <template v-else-if="mode === 'yomu'">
+      読む！TODO
+    </template>
   </div>
 
   <script src="data.js"></script>

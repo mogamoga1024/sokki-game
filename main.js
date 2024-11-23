@@ -2,6 +2,7 @@
 const app = {
     data() {
         return {
+            mode: "kaku", // top, kaku, yomu
             sokkiTable: [],
         }
     },
@@ -49,9 +50,11 @@ const app = {
     },
     methods: {
         onClickKaku() {
+            this.mode = "kaku";
             // todo
         },
         onClickYomu() {
+            this.mode = "yomu";
             // todo
         },
     }
