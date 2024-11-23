@@ -44,7 +44,7 @@
       <div class="sentakusi-container">
         <template v-for="(sentakusi, index) in sentakusiList">
           <input type="radio" name="sentakusi" :id="`sentakusi${index}`" value="1">
-          <label :for="`sentakusi${index}`">{{sentakusi}}</label>
+          <label :for="`sentakusi${index}`" v-html="sentakusi"></label>
         </template>
       </div>
     </template>
@@ -54,6 +54,7 @@
     </template>
   </div>
 
+  <script src="utils.js"></script>
   <script src="data.js"></script>
   <script src="main.js"></script>
 </body>
