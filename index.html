@@ -20,31 +20,21 @@
       <div class="mode-btn">読む！</div>
     </div>
     <table id="sokki-table">
-      <tr>
-        <td>
-          <div class="hira">あ</div>
-          <div class="sokki">&#xF7A0;</div>
-        </td>
-        <td>
-          <div class="hira">い</div>
-          <div class="sokki">&#xF7A1;</div>
-        </td>
-        <td>
-          <div class="hira">う</div>
-          <div class="sokki">&#xF7A2;</div>
-        </td>
-        <td>
-          <div class="hira">え</div>
-          <div class="sokki">&#xF7A3;</div>
-        </td>
-        <td>
-          <div class="hira">お</div>
-          <div class="sokki">&#xF7A4;</div>
+      <tr v-for="sokkiRow in sokkiTable">
+        <td v-for="sokki in sokkiRow">
+          <div class="hira">{{sokki.hira}}</div>
+          <div class="sokki"
+               :class="{
+                 'pad-top': sokki.pad === 'top',
+                 'pad-bottom': sokki.pad === 'bottom'
+               }"
+               v-html="sokki.sokki"></div>
         </td>
       </tr>
     </table>
   </div>
 
+  <script src="data.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

@@ -23,6 +23,10 @@ h1 {
   font-size: 1.3rem;
 }
 
+#app {
+  padding-bottom: 1rem;
+}
+
 .description {
   width: fit-content;
   margin: 1rem auto 0;
@@ -76,4 +80,16 @@ td .hira {
 
 td .sokki {
   font-size: 2rem;
+}
+
+.pad-top {
+  padding-top: 16px;
+}
+
+.pad-top {
+  padding-top: 26px;
+}
+
+.pad-bottom {
+  padding-bottom: 26px;
 }
