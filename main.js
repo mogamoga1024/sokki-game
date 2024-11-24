@@ -102,7 +102,7 @@ const app = {
                 for (const hira of hiraRow) {
                     let sokki = "";
                     if (hira !== "") {
-                        sokki = 速記記号一覧[hira];
+                        sokki = 速記文字一覧[hira];
                     }
                     sokkiRow.push({hira, sokki, pad});
                 }
@@ -122,12 +122,12 @@ const app = {
             const sentakusiList = [];
 
             const hira = this.mondai[this.sintyoku.length];
-            const sokki = 速記記号一覧[hira] ?? "";
+            const sokki = 速記文字一覧[hira] ?? "";
             sentakusiList.push({hira, sokki});
 
             while (sentakusiList.length < 4) {
                 const hira = this.hiraList[randomInt(this.hiraList.length)];
-                const sokki = 速記記号一覧[hira];
+                const sokki = 速記文字一覧[hira];
                 if (sentakusiList.every(s => s.sokki !== sokki)) {
                     sentakusiList.push({hira, sokki});
                 }

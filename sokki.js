@@ -39,7 +39,7 @@ function 平仮名一覧(needぱ行 = true, needきゃ系 = true) {
     return result;
 }
 
-const 速記記号一覧 = {
+const 速記文字一覧 = {
     "あ": "&#xF7A0;",
     "い": "&#xF7A1;",
     "う": "&#xF7A2;",
@@ -161,7 +161,7 @@ const 速記記号一覧 = {
 };
 
 // debug用
-function 速記記号変換(平仮名配列) {
-    return 平仮名配列.map(h => 速記記号一覧[h]).join("");
+function 速記文字変換(平仮名配列) {
+    return 平仮名配列.map(h => 速記文字一覧[h]).join("");
 }
 

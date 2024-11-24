@@ -89,3 +89,7 @@ td .sokki {
 .pad-bottom {
   padding-bottom: 26px;
 }
+
+#poem {
+  margin: 1rem auto 0;
+}
