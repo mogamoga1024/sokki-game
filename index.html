@@ -21,6 +21,7 @@
         <div class="mode-btn" @click="onClickKaku">書く！</div>
         <div class="mode-btn" @click="onClickYomu">読む！</div>
       </div>
+      
       <table id="sokki-table">
         <tr v-for="sokkiRow in sokkiTable">
           <td v-for="sokki in sokkiRow">
@@ -34,6 +35,29 @@
           </td>
         </tr>
       </table>
+
+      <div id="poem">
+        <p>
+          スマホ📱だと速記文字がバグるかもです🙇。
+        </p>
+        <p>
+          濁音、を、ん、ぁぃぅぇぉ、などは対応していません😇。
+        </p>
+        <p>
+          見たことがない速記文字が出てきたら、それは<a href="https://sokki.okoshi-yasu.net/sb-syouryakuhou.html" target="_blank" rel="noopener noreferrer">省略文字</a>です🤔。
+        </p>
+        <p>
+          難易度が高くエンジョイ勢🎮は覚える必要がありませんが、速記の趣🍂 を感じるので残します😵‍💫。
+        </p>
+  
+        <p>
+          以下の文章は個人的なポエムなので読まなくていいです。
+        </p>
+  
+        <p style="margin-top: 2rem;">
+          TODO
+        </p>
+      </div>
     </template>
 
     <template v-else-if="mode === 'kaku'">
@@ -54,29 +78,6 @@
     <template v-else-if="mode === 'yomu'">
       読む！TODO
     </template>
-
-    <div id="poem">
-      <p>
-        スマホ📱だと速記文字がバグるかもです🙇。
-      </p>
-      <p>
-        濁音、を、ん、ぁぃぅぇぉ、などは対応していません😇。
-      </p>
-      <p>
-        見たことがない速記文字が出てきたら、それは<a href="https://sokki.okoshi-yasu.net/sb-syouryakuhou.html" target="_blank" rel="noopener noreferrer">省略文字</a>です🤔。
-      </p>
-      <p>
-        難易度が高くエンジョイ勢🎮は覚える必要がありませんが、速記の趣🍂 を感じるので残します😵‍💫。
-      </p>
-
-      <p>
-        以下の文章は個人的なポエムなので読まなくていいです。
-      </p>
-
-      <p style="margin-top: 2rem;">
-        TODO
-      </p>
-    </div>
   </div>
 
   <script src="utils.js"></script>
