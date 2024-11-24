@@ -40,6 +40,7 @@ const app = {
                 return;
             }
             if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
+                console.log("正解", sentakusi.hira);
                 this.selectedSentakusi = null;
                 this.message = "正解！😆";
                 this.sintyoku.push(sentakusi.sokki);
@@ -60,6 +61,7 @@ const app = {
                 }
             }
             else {
+                console.log("違う", sentakusi.hira);
                 this.selectedSentakusi = sentakusi;
                 this.message = `それは「${sentakusi.hira}」…😢`;
             }
