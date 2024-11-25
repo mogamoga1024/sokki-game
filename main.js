@@ -113,7 +113,8 @@ const app = {
             this.message = "選んでね🤔";
             this.sintyoku = [];
             
-            this.mondai = 問題生成(this.needぱ行, this.needきゃ系);
+            // this.mondai = 問題生成(this.needぱ行, this.needきゃ系);
+            this.mondai = ["う", "ち", "わ"];
             
             this.initSentakusiList();
         },
