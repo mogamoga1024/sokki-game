@@ -6,7 +6,7 @@
   <title>遊んで学べる早稲田式速記ゲーム</title>
   <meta name="description" content="早稲田式速記の学習用ゲーム">
   <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="kakuyomu.css">
+  <link rel="stylesheet" href="kaku.css">
   <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
   <script>new ViewportExtra(375)</script>
@@ -18,7 +18,10 @@
       <h1>遊んで学べる早稲田式速記ゲーム</h1>
       <div class="description">遊びたいモードを押してね☺</div>
       <div id="mode-btn-container">
-        <div class="mode-btn" @click="onClickKaku">書く！</div>
+        <div class="mode-btn" @click="onClickKaku">かんたん</div>
+        <div class="mode-btn" @click="onClickKaku">ふつう</div>
+        <div class="mode-btn" @click="onClickKaku">むずい</div>
+        <div class="mode-btn" @click="onClickKaku">つらたん</div>
       </div>
       
       <table id="sokki-table">
