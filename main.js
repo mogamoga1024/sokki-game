@@ -20,14 +20,11 @@ const app = {
     created() {
         this.initSokkiTable();
         this.hiraList = 平仮名一覧(this.needぱ行, this.needきゃ系);
-
-        // debug stato
-        this.initMondai();
-        // debug end
     },
     methods: {
         onClickKaku() {
             this.mode = "kaku";
+            this.initMondai();
             this.initSentakusiList();
         },
 
