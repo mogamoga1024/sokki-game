@@ -91,5 +91,6 @@ td .sokki {
 }
 
 #poem {
+  max-width: 820px;
   margin: 1.5rem auto 0;
 }
