@@ -4,7 +4,7 @@ let canClickSentakusi = true;
 const app = {
     data() {
         return {
-            mode: "top", // top, kaku, yomu
+            mode: "top", // top, kaku
             needぱ行: true, // todo
             needきゃ系: true, // todo
             sokkiTable: [],
@@ -29,10 +29,6 @@ const app = {
         onClickKaku() {
             this.mode = "kaku";
             this.initSentakusiList();
-        },
-        onClickYomu() {
-            this.mode = "yomu";
-            // todo
         },
 
         onClickSentakusi(sentakusi) {
