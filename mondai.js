@@ -276,7 +276,7 @@ const 問題あ系 = [
     "らいふ",
     "むらさきいろ",
     "からむ",
-    "からい",
+    "ふらくたる",
     "たらいまわし",
 
     // り
@@ -308,11 +308,11 @@ const 問題あ系 = [
     "まろまゆ",
 
     // わ
-    "",
-    "",
-    "",
-    "",
-    "",
+    "わかる",
+    "わからない",
+    "わらえる",
+    "わふく",
+    "ふわふわ",
 ];
 
 const 問題ぱ行 = [
@@ -525,9 +525,42 @@ const 問題ぴゃ行 = [
 ];
 
 function 問題生成(needぱ行 = true, needきゃ系 = true) {
-    // todo
+    let text = "";
 
-    const text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+    if (needぱ行 && !needきゃ系) {
+        if (Math.random() < 0.3) {
+            text = Array.from(問題ぱ行[randomInt(問題ぱ行.length)]);
+        }
+        else {
+            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+        }
+    }
+    else if (!needぱ行 && needきゃ系) {
+        if (Math.random() < 0.3) {
+            text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
+        }
+        else {
+            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+        }
+    }
+    else if (needぱ行 && needきゃ系) {
+        if (Math.random() < 0.3) {
+            text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
+        }
+        else if (Math.random() < 0.2) {
+            text = Array.from(問題ぱ行[randomInt(問題ぱ行.length)]);
+        }
+        else if (Math.random() < 0.1) {
+            text = Array.from(問題ぴゃ行[randomInt(問題ぴゃ行.length)]);
+        }
+        else {
+            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+        }
+    }
+    else {
+        text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+    }
+
     const mondai = [];
 
     for (let i = 0; i < text.length; i++) {
