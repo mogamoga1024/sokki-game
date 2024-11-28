@@ -1,11 +1,14 @@
 
 #btn-container {
-  margin: 0.7rem 0.5rem 0;
+  max-width: 820px;
+  margin: 0.7rem auto 0;
 }
 
 #retire-btn {
   width: fit-content;
+  margin-left: 0.5rem;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 
 #mondai {
