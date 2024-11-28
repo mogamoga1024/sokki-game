@@ -20,21 +20,21 @@
       <h1>遊んで学べる早稲田式速記ゲーム</h1>
       <div class="description">遊びたいモードを押してね☺</div>
       <div id="mode-btn-container">
-        <fieldset>
+        <fieldset id="kiso">
           <legend>基礎</legend>
-          <fieldset>
-            <legend>清音</legend>
-            <div class="mode-btn" @click="onClickKaku">五十音順🥳</div>
-            <div class="mode-btn" @click="onClickKaku">ランダム😀</div>
+          <fieldset class="kiso-fieldset">
+            <legend>五十音順</legend>
+            <div class="mode-btn" @click="onClickKaku">清音🥳</div>
+            <div class="mode-btn" @click="onClickKaku">全部🥴</div>
           </fieldset>
-          <fieldset>
-            <legend>全部</legend>
-            <div class="mode-btn" @click="onClickKaku">五十音順🥴</div>
-            <div class="mode-btn" @click="onClickKaku">ランダム😖</div>
+          <fieldset class="kiso-fieldset">
+            <legend>ランダム</legend>
+            <div class="mode-btn" @click="onClickKaku">清音😀</div>
+            <div class="mode-btn" @click="onClickKaku">全部😖</div>
           </fieldset>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="jissen">
           <legend>実践</legend>
           <div class="mode-btn" @click="onClickKaku">清音😆</div>
           <div class="mode-btn" @click="onClickKaku">全部😱</div>

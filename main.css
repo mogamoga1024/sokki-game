@@ -33,13 +33,30 @@ h1 {
 }
 
 #mode-btn-container {
-  margin-top: 1rem;
+  width: fit-content;
+  margin: 1rem auto 0;
+}
+
+#kiso {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+#jissen {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.kiso-fieldset {
+  display: inline-block;
 }
 
 .mode-btn {
   width: fit-content;
   margin: 0 auto;
-  padding: 8px 32px;
+  padding: 8px 16px;
   color: #fff;
   background-color: #268bde;
   border-radius: 8px;
