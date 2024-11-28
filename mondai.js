@@ -524,26 +524,10 @@ const 問題ぴゃ行 = [
     "ぴょこぴょこ",
 ];
 
-function 問題生成(needぱ行 = true, needきゃ系 = true) {
+function 問題生成(needぱきゃ = true) {
     let text = "";
 
-    if (needぱ行 && !needきゃ系) {
-        if (Math.random() < 0.3) {
-            text = Array.from(問題ぱ行[randomInt(問題ぱ行.length)]);
-        }
-        else {
-            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
-        }
-    }
-    else if (!needぱ行 && needきゃ系) {
-        if (Math.random() < 0.3) {
-            text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
-        }
-        else {
-            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
-        }
-    }
-    else if (needぱ行 && needきゃ系) {
+    if (needぱきゃ) {
         if (Math.random() < 0.3) {
             text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
         }

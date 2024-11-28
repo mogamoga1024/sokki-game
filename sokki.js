@@ -25,15 +25,11 @@ const 平仮名 = {
     "ぴゃ行": ["ぴゃ", "ぴゅ", "ぴょ"]
 };
 
-function 平仮名一覧(needぱ行 = true, needきゃ系 = true) {
+function 平仮名一覧(needぱきゃ = true) {
     let result = Array.from(平仮名.あ系);
-    if (needぱ行) {
+    if (needぱきゃ) {
         result = result.concat(平仮名.ぱ行);
-    }
-    if (needきゃ系) {
         result = result.concat(平仮名.きゃ系);
-    }
-    if (needぱ行 && needきゃ系) {
         result = result.concat(平仮名.ぴゃ行);
     }
     return result;

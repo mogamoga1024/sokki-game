@@ -5,11 +5,8 @@ const app = {
     data() {
         return {
             mode: "top", // top, kaku
-            needぱ行: true, // todo
-            needきゃ系: true, // todo
             sokkiTable: [],
             hiraList: [],
-
             mondai: [],
             sintyoku: [],
             message: "選んでね🤔",
@@ -19,7 +16,7 @@ const app = {
     },
     created() {
         this.initSokkiTable();
-        this.hiraList = 平仮名一覧(this.needぱ行, this.needきゃ系);
+        this.hiraList = 平仮名一覧();
     },
     methods: {
         onClickKaku() {
@@ -102,11 +99,11 @@ const app = {
                 this.sokkiTable.push(sokkiRow);
             }
         },
-        initMondai() {
+        initMondai(needぱきゃ = true) {
             this.message = "選んでね🤔";
             this.sintyoku = [];
             
-            this.mondai = 問題生成(this.needぱ行, this.needきゃ系);
+            this.mondai = 問題生成();
             
             this.initSentakusiList();
         },
