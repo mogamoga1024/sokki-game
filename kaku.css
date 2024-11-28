@@ -52,10 +52,12 @@
 
 .sentakusi {
   width: 80px;
-  padding: 26px 0;
+  height: calc(80px + 26px * 2);
+  /* padding: 26px 0; */
   border: 2px solid #007bff;
   border-radius: 6px;
   font-size: 2rem;
+  line-height: calc(80px + 26px * 2);
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
