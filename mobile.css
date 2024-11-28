@@ -35,5 +35,11 @@
   #mondai {
     margin-top: 1rem;
   }
+
+  #sintyoku {
+    height: 180px;
+    line-height: 180px;
+    font-size: 1.4rem;
+  }
 }
 

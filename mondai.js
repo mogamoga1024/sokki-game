@@ -545,6 +545,10 @@ function 実践問題生成(needぱきゃ = true) {
         text = Array.from(問題あ系[randomInt(問題あ系.length)]);
     }
 
+    // debug start
+    text = "ひらかれる";
+    // debug end
+
     const mondai = [];
 
     for (let i = 0; i < text.length; i++) {
