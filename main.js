@@ -24,6 +24,8 @@ const app = {
     },
     methods: {
         onClickPlay(course, order, type) {
+            console.log(course, order, type);
+
             mondaiCourse = course;
             mondaiOrder = order;
             mondaiType = type;
