@@ -33,24 +33,23 @@ h1 {
 }
 
 #mode-btn-container {
-  width: fit-content;
+  max-width: 500px;
   margin: 1rem auto 0;
 }
 
-#kiso {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
+#jissen {
+  margin-top: 0.5rem;
 }
 
-#jissen {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
+#kiso {
+  display: flex;
+  flex-wrap: wrap; /* デフォのnowrapでもいいが、念のため */
+  justify-content: center;
 }
 
 .kiso-fieldset {
-  display: inline-block;
+  width: 100%;
+  max-width: 150px;
 }
 
 .mode-btn {
