@@ -16,13 +16,17 @@ const app = {
     },
     created() {
         this.initSokkiTable();
-        this.hiraList = 平仮名一覧();
     },
     methods: {
         onClickKaku() {
             this.mode = "kaku";
+            this.hiraList = 平仮名一覧();
             this.initMondai();
             this.initSentakusiList();
+        },
+
+        onClickRetire() {
+            this.mode = "top";
         },
 
         onClickSentakusi(sentakusi) {
