@@ -21,10 +21,19 @@
       <h1>遊んで学べる早稲田式速記ゲーム</h1>
       <div class="description">遊びたいモードを押してね☺</div>
       <div id="mode-btn-container">
-        <div class="mode-btn" @click="onClickKaku">よゆう😀</div>
-        <div class="mode-btn" @click="onClickKaku">ふつう😐</div>
-        <div class="mode-btn" @click="onClickKaku">むずい🤨</div>
-        <div class="mode-btn" @click="onClickKaku">つらい😵‍💫</div>
+        <fieldset>
+          <legend>基礎</legend>
+          <fieldset>
+            <legend>清音</legend>
+            <div class="mode-btn" @click="onClickKaku">五十音順</div>
+            <div class="mode-btn" @click="onClickKaku">ランダム</div>
+          </fieldset>
+          <fieldset>
+            <legend>全部</legend>
+            <div class="mode-btn" @click="onClickKaku">五十音順</div>
+            <div class="mode-btn" @click="onClickKaku">ランダム</div>
+          </fieldset>
+        </fieldset>
       </div>
       
       <table id="sokki-table">
