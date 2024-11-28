@@ -11,8 +11,6 @@ const app = {
             mode: "top", // top, kaku
             sokkiTable: [],
 
-            
-
             hiraList: [],
             mondai: [],
             sintyoku: [],
