@@ -8,7 +8,7 @@
 const 問題あ系 = [
     // あ
     "こあら",
-    "ありがとう",
+    "あいしてる",
     "あさひ",
     "ひあり",
     "あいさつ",
@@ -531,7 +531,7 @@ function 問題生成(needぱきゃ = true) {
         if (Math.random() < 0.3) {
             text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
         }
-        else if (Math.random() < 0.2) {
+        else if (Math.random() < 0.08) {
             text = Array.from(問題ぱ行[randomInt(問題ぱ行.length)]);
         }
         else if (Math.random() < 0.1) {
