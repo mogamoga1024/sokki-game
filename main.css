@@ -28,6 +28,10 @@ h1 {
   font-size: 1.3rem;
 }
 
+.description, #poem {
+  font-size: 0.9rem;
+}
+
 .description {
   width: fit-content;
   margin: 1rem auto 0;

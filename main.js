@@ -6,6 +6,9 @@ const app = {
         return {
             mode: "top", // top, kaku
             sokkiTable: [],
+
+            
+
             hiraList: [],
             mondai: [],
             sintyoku: [],

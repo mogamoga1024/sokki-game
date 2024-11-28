@@ -20,6 +20,10 @@
     font-size: 1.1rem;
   }
 
+  .description, #poem {
+    font-size: 0.7rem;
+  }
+
   #btn-container {
     margin-top: 0.4rem;
   }
