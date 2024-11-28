@@ -60,8 +60,13 @@
     </template>
 
     <template v-else-if="mode === 'kaku'">
-      <div id="mondai">{{mondai.join("")}}</div>
-      <div id="sintyoku" v-html="sintyoku.join('') + '?'.repeat(mondai.length - sintyoku.length)"></div>
+      <div id="mondai">
+        <span v-for="(moji, index) in mondai"
+              :class="{seikai: index < sintyoku.length}">
+          {{moji}}
+        </span>
+      </div>
+      <div id="sintyoku" v-html="sintyoku.join('')"></div>
       <div id="message">{{message}}</div>
 
       <div class="sentakusi-container">
