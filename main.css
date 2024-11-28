@@ -37,7 +37,7 @@ h1 {
   margin: 1rem auto 0;
 }
 
-#mode-btn-container {
+#play-btn-container {
   max-width: 500px;
   margin: 1rem auto 0;
 }
@@ -58,7 +58,7 @@ h1 {
   max-width: 150px;
 }
 
-.mode-btn {
+.play-btn {
   width: fit-content;
   margin: 0 auto;
   padding: 8px 16px;
@@ -70,17 +70,17 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.mode-btn:not(:first-of-type) {
+.play-btn:not(:first-of-type) {
   margin-top: 12px;
 }
 
 @media (any-hover: hover) {
-  .mode-btn:hover {
+  .play-btn:hover {
     background-color: #005bb5;
   }
 }
 @media (any-hover: none) {
-  .mode-btn:active {
+  .play-btn:active {
     background-color: #005bb5;
   }
 }
