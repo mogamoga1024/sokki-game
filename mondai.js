@@ -524,7 +524,7 @@ const 問題ぴゃ行 = [
     "ぴょこぴょこ",
 ];
 
-function 問題生成(needぱきゃ = true) {
+function 実践問題生成(needぱきゃ = true) {
     let text = "";
 
     if (needぱきゃ) {

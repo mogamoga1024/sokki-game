@@ -1,6 +1,10 @@
 
 let canClickSentakusi = true;
 
+let mondaiCourse = "";
+let mondaiOrder = "";
+let mondaiType = "";
+
 const app = {
     data() {
         return {
@@ -21,9 +25,13 @@ const app = {
         this.initSokkiTable();
     },
     methods: {
-        onClickKaku() {
+        onClickPlay(course, order, type) {
+            mondaiCourse = course;
+            mondaiOrder = order;
+            mondaiType = type;
+
             this.mode = "kaku";
-            this.hiraList = 平仮名一覧();
+            this.hiraList = 平仮名一覧(mondaiType === "全部");
             this.initMondai();
             this.initSentakusiList();
         },
@@ -106,11 +114,17 @@ const app = {
                 this.sokkiTable.push(sokkiRow);
             }
         },
-        initMondai(needぱきゃ = true) {
+        initMondai() {
             this.message = "選んでね🤔";
             this.sintyoku = [];
             
-            this.mondai = 問題生成();
+            if (mondaiCourse === "基礎") {
+                // todo
+                this.mondai = 実践問題生成();
+            }
+            else if (mondaiCourse === "実践") {
+                this.mondai = 実践問題生成(mondaiType === "全部");
+            }
             
             this.initSentakusiList();
         },
