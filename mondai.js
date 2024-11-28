@@ -557,6 +557,8 @@ function 問題生成(needぱきゃ = true) {
         mondai.push(text[i]);
     }
 
+    // todo バリデーション
+
     return mondai;
 }
 
