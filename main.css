@@ -18,11 +18,11 @@
 }
 
 #app {
-  margin-top: 1.5rem;
   padding-bottom: 1rem;
 }
 
 h1 {
+  margin-top: 1.5rem;
   text-align: center;
   font-size: 1.3rem;
 }

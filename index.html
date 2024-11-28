@@ -60,6 +60,11 @@
     </template>
 
     <template v-else-if="mode === 'kaku'">
+      <div id="btn-container">
+        <div id="retire-btn">
+          🔙終わる
+        </div>
+      </div>
       <div id="mondai">
         <span v-for="(moji, index) in mondai"
               :class="{seikai: index < sintyoku.length}">
