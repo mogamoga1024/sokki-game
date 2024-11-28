@@ -43,8 +43,9 @@ h1 {
 
 #kiso {
   display: flex;
-  flex-wrap: wrap; /* デフォのnowrapでもいいが、念のため */
+  flex-wrap: wrap;
   justify-content: center;
+  row-gap: 0.5rem;
 }
 
 .kiso-fieldset {
