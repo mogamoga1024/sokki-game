@@ -12,7 +12,7 @@ const 平仮名 = {
         "ら", "り", "る", "れ", "ろ",
         "わ"
     ],
-    "ぱ行": ["ぽ", "ぴ", "ぷ", "ぺ", "ぽ"],
+    "ぱ行": ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
     "きゃ系": [
         "きゃ", "きゅ", "きょ",
         "しゃ", "しゅ", "しょ",
@@ -25,12 +25,23 @@ const 平仮名 = {
     "ぴゃ行": ["ぴゃ", "ぴゅ", "ぴょ"]
 };
 
-function 平仮名一覧(needぱきゃ = true) {
-    let result = Array.from(平仮名.あ系);
-    if (needぱきゃ) {
-        result = result.concat(平仮名.ぱ行);
-        result = result.concat(平仮名.きゃ系);
-        result = result.concat(平仮名.ぴゃ行);
+function 平仮名一覧(type = "清音") {
+    let result = [];
+    switch (type) {
+        case "清音":
+            result = Array.from(平仮名.あ系);
+            break;
+        case "特殊":
+            result = Array.from(平仮名.ぱ行);
+            result = result.concat(平仮名.きゃ系);
+            result = result.concat(平仮名.ぴゃ行);
+            break;
+        case "全部":
+            result = Array.from(平仮名.あ系);
+            result = result.concat(平仮名.ぱ行);
+            result = result.concat(平仮名.きゃ系);
+            result = result.concat(平仮名.ぴゃ行);
+            break;
     }
     return result;
 }

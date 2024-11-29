@@ -2,8 +2,10 @@
 let canClickSentakusi = true;
 
 let mondaiCourse = "";
-let mondaiOrder = "";
 let mondaiType = "";
+
+let hiraList = [];
+let hiraListIndex = 0;
 
 const app = {
     data() {
@@ -11,7 +13,6 @@ const app = {
             mode: "top", // top, kaku
             sokkiTable: [],
 
-            hiraList: [],
             mondai: [],
             sintyoku: [],
             message: "選んでね🤔",
@@ -27,11 +28,16 @@ const app = {
             console.log(course, order, type);
 
             mondaiCourse = course;
-            mondaiOrder = order;
             mondaiType = type;
 
             this.mode = "kaku";
-            this.hiraList = 平仮名一覧(mondaiType === "全部");
+
+            hiraList = 平仮名一覧(mondaiType);
+            hiraListIndex = 0;
+            if (order === "ランダム") {
+                shuffle(hiraList);
+            }
+            
             this.initMondai();
             this.initSentakusiList();
         },
@@ -52,6 +58,12 @@ const app = {
                 
                 canClickSentakusi = false;
                 if (this.sintyoku.length === this.mondai.length) {
+                    if (mondaiCourse === "基礎") {
+                        hiraListIndex++;
+                        if (hiraListIndex >= hiraList.length) {
+                            // todo clear
+                        }
+                    }
                     setTimeout(() => {
                         this.initMondai();
                         canClickSentakusi = true;
@@ -119,8 +131,7 @@ const app = {
             this.sintyoku = [];
             
             if (mondaiCourse === "基礎") {
-                // todo
-                this.mondai = 実践問題生成();
+                this.mondai = [hiraList[hiraListIndex]];
             }
             else if (mondaiCourse === "実践") {
                 this.mondai = 実践問題生成(mondaiType === "全部");
@@ -137,7 +148,7 @@ const app = {
             sentakusiList.push({hira, sokki});
 
             while (sentakusiList.length < 4) {
-                const hira = this.hiraList[randomInt(this.hiraList.length)];
+                const hira = hiraList[randomInt(hiraList.length)];
                 const sokki = 速記文字一覧[hira];
                 if (sentakusiList.every(s => s.sokki !== sokki)) {
                     sentakusiList.push({hira, sokki});
