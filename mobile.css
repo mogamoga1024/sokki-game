@@ -24,12 +24,16 @@
     font-size: 0.7rem;
   }
 
-  #btn-container {
+  #game-header {
     margin-top: 0.4rem;
   }
 
   #retire-btn {
     margin-left: 0.2rem;
+  }
+
+  #sintyoku {
+    margin-right: 0.2rem;
   }
 
   #mondai {
