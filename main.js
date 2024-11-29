@@ -5,7 +5,6 @@ let mondaiCourse = "";
 let mondaiType = "";
 
 let hiraList = [];
-let hiraListIndex = 0;
 
 const app = {
     data() {
@@ -13,6 +12,7 @@ const app = {
             mode: "top", // top, kaku
             sokkiTable: [],
 
+            hiraListIndex: 0,
             mondai: [],
             kaitou: [],
             message: "選んでね🤔",
@@ -22,6 +22,17 @@ const app = {
     },
     created() {
         this.initSokkiTable();
+    },
+    computed: {
+        sintyoku() {
+            if (mondaiCourse === "基礎") {
+                return `${this.hiraListIndex}/${hiraList.length}`;
+            }
+            else if (mondaiCourse === "実践") {
+                // todo
+                return "10/20";
+            }
+        }
     },
     methods: {
         onClickPlay(course, order, type) {
@@ -33,7 +44,7 @@ const app = {
             this.mode = "kaku";
 
             hiraList = 平仮名一覧(mondaiType);
-            hiraListIndex = 0;
+            this.hiraListIndex = 0;
             if (order === "ランダム") {
                 shuffle(hiraList);
             }
@@ -59,8 +70,8 @@ const app = {
                 canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
                     if (mondaiCourse === "基礎") {
-                        hiraListIndex++;
-                        if (hiraListIndex >= hiraList.length) {
+                        this.hiraListIndex++;
+                        if (this.hiraListIndex >= hiraList.length) {
                             // todo clear
                         }
                     }
@@ -131,7 +142,7 @@ const app = {
             this.kaitou = [];
             
             if (mondaiCourse === "基礎") {
-                this.mondai = [hiraList[hiraListIndex]];
+                this.mondai = [hiraList[this.hiraListIndex]];
             }
             else if (mondaiCourse === "実践") {
                 this.mondai = 実践問題生成(mondaiType === "全部");
