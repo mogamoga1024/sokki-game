@@ -85,11 +85,11 @@
       </div>
       <div id="mondai">
         <span v-for="(moji, index) in mondai"
-              :class="{seikai: index < sintyoku.length}">
+              :class="{seikai: index < kaitou.length}">
           {{moji}}
         </span>
       </div>
-      <div id="sintyoku" v-html="sintyoku.join('')"></div>
+      <div id="kaitou" v-html="kaitou.join('')"></div>
       <div id="message">{{message}}</div>
 
       <div class="sentakusi-container">

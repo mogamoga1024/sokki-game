@@ -14,7 +14,7 @@ const app = {
             sokkiTable: [],
 
             mondai: [],
-            sintyoku: [],
+            kaitou: [],
             message: "選んでね🤔",
             sentakusiList: [],
             selectedSentakusi: null,
@@ -50,14 +50,14 @@ const app = {
             if (!canClickSentakusi) {
                 return;
             }
-            if (this.mondai[this.sintyoku.length] === sentakusi.hira) {
+            if (this.mondai[this.kaitou.length] === sentakusi.hira) {
                 console.log("正解", sentakusi.hira);
                 this.selectedSentakusi = null;
                 this.message = "正解！😆";
-                this.sintyoku.push(sentakusi.sokki);
+                this.kaitou.push(sentakusi.sokki);
                 
                 canClickSentakusi = false;
-                if (this.sintyoku.length === this.mondai.length) {
+                if (this.kaitou.length === this.mondai.length) {
                     if (mondaiCourse === "基礎") {
                         hiraListIndex++;
                         if (hiraListIndex >= hiraList.length) {
@@ -128,7 +128,7 @@ const app = {
         },
         initMondai() {
             this.message = "選んでね🤔";
-            this.sintyoku = [];
+            this.kaitou = [];
             
             if (mondaiCourse === "基礎") {
                 this.mondai = [hiraList[hiraListIndex]];
@@ -143,7 +143,7 @@ const app = {
             this.selectedSentakusi = null;
             const sentakusiList = [];
 
-            const hira = this.mondai[this.sintyoku.length];
+            const hira = this.mondai[this.kaitou.length];
             const sokki = 速記文字一覧[hira] ?? "";
             sentakusiList.push({hira, sokki});
 
