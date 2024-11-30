@@ -7,6 +7,7 @@ let hiraList = [];
 let mondaiList = [];
 
 let startTime = 0;
+let nigateCountMap = null;
 
 let canClickResultBtn = false;
 
@@ -30,6 +31,7 @@ const app = {
             clearTime: 0,
             correctCount: 0,
             missCount: 0,
+            nigate: "",
         }
     },
     created() {
@@ -141,7 +143,8 @@ const app = {
                 return;
             }
 
-            if (this.mondai[this.kaitou.length] === sentakusi.hira) {
+            const seikai = this.mondai[this.kaitou.length];
+            if (sentakusi.hira === seikai) {
                 console.log("正解", sentakusi.hira);
                 this.correctCount++;
                 this.selectedSentakusi = null;
@@ -157,6 +160,14 @@ const app = {
                     setTimeout(() => {
                         if (isClear) {
                             this.scene = "result";
+                            const nigateList = Array.from(nigateCountMap).sort((a, b) => b[1] - a[1]).map(a => a[0]);
+                            if (nigateList.length === 0) {
+                                this.nigate = "ない！";
+                            }
+                            else {
+                                this.nigate = nigateList.slice(0, 3).join(" ");
+                            }
+
                             // リザルト画面のボタンを思わぬ形で押してほしくないため
                             setTimeout(() => {
                                 canClickResultBtn = true;
@@ -176,6 +187,14 @@ const app = {
                 this.missCount++;
                 this.selectedSentakusi = sentakusi;
                 this.message = `それは「${sentakusi.hira}」…😢`;
+
+                if (nigateCountMap.has(seikai)) {
+                    const missCount = nigateCountMap.get(seikai);
+                    nigateCountMap.set(seikai, missCount + 1);
+                }
+                else {
+                    nigateCountMap.set(seikai, 1);
+                }
             }
         },
 
@@ -294,6 +313,8 @@ const app = {
             this.missCount = 0;
             this.clearTime = 0;
             startTime = performance.now();
+            this.nigate = "";
+            nigateCountMap = new Map();
         },
 
         initMondai() {
