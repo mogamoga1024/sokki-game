@@ -13,7 +13,7 @@ let canClickResultBtn = false;
 const app = {
     data() {
         return {
-            scene: "top", // top, game, result
+            scene: "countdown", // top, countdown, game, result
             sokkiTable: [],
 
             mondaiListIndex: 0,
@@ -81,6 +81,9 @@ const app = {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
             gameConfig = {course, order, type};
+
+            // todo countdown
+
             this.startGame(gameConfig);
         },
 

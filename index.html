@@ -7,6 +7,7 @@
   <meta name="description" content="早稲田式速記の学習用ゲーム">
   <link rel="stylesheet" href="loading.css">
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="countdown.css">
   <link rel="stylesheet" href="game.css">
   <link rel="stylesheet" href="result.css">
   <link rel="stylesheet" href="mobile.css">
@@ -84,6 +85,10 @@
           絵文字も可愛らしい手書き文字になるのも最高です😍
         </p>
       </div>
+    </template>
+
+    <template v-else-if="scene === 'countdown'">
+      3 2 1 GO!
     </template>
 
     <template v-else-if="scene === 'game'">
