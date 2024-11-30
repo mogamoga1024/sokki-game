@@ -88,7 +88,8 @@
     </template>
 
     <template v-else-if="scene === 'countdown'">
-      3 2 1 GO!
+      <div id="countdown">{{countdownText}}</div>
+      <div id="pc-hint" :style="{'display': isPC ? 'block' : 'none'}">※PCはhjklキーでも選択できます</div>
     </template>
 
     <template v-else-if="scene === 'game'">

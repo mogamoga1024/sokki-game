@@ -13,8 +13,11 @@ let canClickResultBtn = false;
 const app = {
     data() {
         return {
-            scene: "countdown", // top, countdown, game, result
+            scene: "top", // top, countdown, game, result
             sokkiTable: [],
+
+            countdownText: "3",
+            isPC: true,
 
             mondaiListIndex: 0,
             mondai: [],
@@ -30,6 +33,11 @@ const app = {
         }
     },
     created() {
+        const mobileRegex = /iphone;|(android|nokia|blackberry|bb10;).+mobile|android.+fennec|opera.+mobi|windows phone|symbianos/i;
+        const isMobileByUa = mobileRegex.test(navigator.userAgent);;
+        const isMobileByClientHint = navigator.userAgentData && navigator.userAgentData.mobile;
+        this.isPC = !isMobileByUa && !isMobileByClientHint;
+
         this.initSokkiTable();
     },
     computed: {
@@ -82,9 +90,20 @@ const app = {
             console.log(course, order, type);
             gameConfig = {course, order, type};
 
-            // todo countdown
-
-            this.startGame(gameConfig);
+            this.scene = "countdown";
+            this.countdownText = "3";
+            setTimeout(() => {
+                this.countdownText = "2";
+                setTimeout(() => {
+                    this.countdownText = "1";
+                    setTimeout(() => {
+                        this.countdownText = "GO!";
+                        setTimeout(() => {
+                            this.startGame(gameConfig);
+                        }, 600);
+                    }, 600);
+                }, 600);
+            }, 600);
         },
 
         onClickRetire() {

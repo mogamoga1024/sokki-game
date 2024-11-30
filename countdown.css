@@ -1,0 +1,12 @@
+
+#countdown {
+  margin-top: 1rem;
+  font-size: 8rem;
+  line-height: 8rem;
+  text-align: center;
+}
+
+#pc-hint {
+  margin-top: 0.5rem;
+  text-align: center;
+}
