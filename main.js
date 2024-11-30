@@ -7,7 +7,7 @@ let mondaiList = [];
 const app = {
     data() {
         return {
-            scene: "top", // top, kaku
+            scene: "top", // top, kaku, result
             sokkiTable: [],
 
             mondaiListIndex: 0,
@@ -67,8 +67,9 @@ const app = {
                     this.mondaiListIndex++;
                     if (this.mondaiListIndex >= mondaiList.length) {
                         // todo clear
+                        this.scene = "result";
                     }
-                    setTimeout(() => {
+                    else setTimeout(() => {
                         this.initMondai();
                         canClickSentakusi = true;
                     }, 400);
