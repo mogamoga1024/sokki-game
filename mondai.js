@@ -527,7 +527,7 @@ const 問題ぴゃ行 = [
 const 清音正規表現 = /^[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ]+$/;
 const 全部正規表現 = /^[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ|ぱぴぷぺぽ|きゃ|きゅ|きょ|しゃ|しゅ|しょ|ちゃ|ちゅ|ちょ|にゃ|にゅ|にょ|ひゃ|ひゅ|ひょ|みゃ|みゅ|みょ|りゃ|りゅ|りょ|ぴゃ|ぴゅ|ぴょ]+$/;
 
-function 実践問題生成(needぱきゃ) {
+function 実践問題文生成(needぱきゃ) {
     let text = "";
 
     if (needぱきゃ) {
@@ -548,6 +548,19 @@ function 実践問題生成(needぱきゃ) {
         text = 問題あ系[randomInt(問題あ系.length)];
     }
 
+    // バリデーション 別にいらないが念のため
+    if (
+        needぱきゃ && !全部正規表現.test(text) ||
+        !needぱきゃ && !清音正規表現.test(text)
+    ) {
+        console.error(`未対応の問題：${text}`);
+        return 実践問題文生成(needぱきゃ);
+    }
+
+    return text;
+}
+
+function text2mondai(text, needぱきゃ) {
     const mondai = [];
 
     for (let i = 0; i < text.length; i++) {
@@ -560,18 +573,24 @@ function 実践問題生成(needぱきゃ) {
         mondai.push(text[i]);
     }
 
-    // バリデーション 別にいらないが念のため
-    if (
-        needぱきゃ && !全部正規表現.test(text) ||
-        !needぱきゃ && !清音正規表現.test(text)
-    ) {
-        console.error(`未対応の問題：${text}`);
-        実践問題生成(needぱきゃ);
-    }
-
     return mondai;
 }
 
-function 実践問題リスト生成(needぱきゃ) {
-    // todo
+function 実践問題リスト生成(needぱきゃ, 問題数 = 30) {
+    const textList = [];
+    const mondaiList = [];
+
+    for (let i = 0; i < 問題数; i++) {
+        const text = 実践問題文生成(needぱきゃ);
+        if (textList.includes(text)) {
+            // 重複禁止
+            i--;
+            continue;
+        }
+        textList.push(text);
+        const mondai = text2mondai(text, needぱきゃ);
+        mondaiList.push(mondai);
+    }
+
+    return mondaiList;
 }

@@ -1,9 +1,6 @@
 
 let canClickSentakusi = true;
 
-let mondaiCourse = "";
-let mondaiType = "";
-
 let hiraList = [];
 let mondaiList = [];
 
@@ -26,25 +23,16 @@ const app = {
     },
     computed: {
         sintyoku() {
-            if (mondaiCourse === "基礎") {
-                return `${this.mondaiListIndex}/${mondaiList.length}`;
-            }
-            else if (mondaiCourse === "実践") {
-                // todo
-                return "10/20";
-            }
+            return `${this.mondaiListIndex}/${mondaiList.length}`;
         }
     },
     methods: {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
 
-            mondaiCourse = course;
-            mondaiType = type;
-
             this.mode = "kaku";
 
-            hiraList = 平仮名一覧(mondaiType);
+            hiraList = 平仮名一覧(type);
             this.mondaiListIndex = 0;
             if (course === "基礎") {
                 mondaiList = hiraList.map(hira => [hira]);
@@ -53,7 +41,7 @@ const app = {
                 }
             }
             else if (course === "実践") {
-                // todo
+                mondaiList = 実践問題リスト生成(type === "全部");
             }
             
             this.initMondai();
@@ -76,11 +64,9 @@ const app = {
                 
                 canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
-                    if (mondaiCourse === "基礎") {
-                        this.mondaiListIndex++;
-                        if (this.mondaiListIndex >= mondaiList.length) {
-                            // todo clear
-                        }
+                    this.mondaiListIndex++;
+                    if (this.mondaiListIndex >= mondaiList.length) {
+                        // todo clear
                     }
                     setTimeout(() => {
                         this.initMondai();
@@ -147,14 +133,7 @@ const app = {
         initMondai() {
             this.message = "選んでね🤔";
             this.kaitou = [];
-            
-            if (mondaiCourse === "基礎") {
-                this.mondai = mondaiList[this.mondaiListIndex];
-            }
-            else if (mondaiCourse === "実践") {
-                this.mondai = 実践問題生成(mondaiType === "全部");
-            }
-            
+            this.mondai = mondaiList[this.mondaiListIndex];
             this.initSentakusiList();
         },
         initSentakusiList() {
