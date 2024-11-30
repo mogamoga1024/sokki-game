@@ -8,6 +8,8 @@ let gameConfig = {
 let hiraList = [];
 let mondaiList = [];
 
+let startTime = 0;
+
 const app = {
     data() {
         return {
@@ -20,6 +22,10 @@ const app = {
             message: "選んでね🤔",
             sentakusiList: [],
             selectedSentakusi: null,
+
+            clearTime: 0,
+            correctCount: 0,
+            missCount: 0,
         }
     },
     created() {
@@ -28,6 +34,38 @@ const app = {
     computed: {
         sintyoku() {
             return `${this.mondaiListIndex}/${mondaiList.length}`;
+        },
+        score() {
+            const bunbo1 = this.clearTime / 1000 / 60;
+            const bunbo2 = this.correctCount + this.missCount;
+            if (bunbo1 === 0 || bunbo2 === 0) {
+                return 0;
+            }
+            const s = this.correctCount / bunbo1 * Math.pow(this.correctCount / bunbo2, 3);
+            return Math.floor(s * 100);
+        },
+        rank() {
+            // todo
+            return "S";
+        },
+        displayClearTime() {
+            const tmp = Math.round(this.clearTime / 1000 * 10);
+            return tmp / 10;
+        },
+        hitomoji() {
+            if (this.correctCount === 0) {
+                return 0;
+            }
+            const tmp = Math.round(this.clearTime / 1000 / this.correctCount * 10);
+            return tmp / 10;
+        },
+        seikakuritu() {
+            const bunbo = this.correctCount + this.missCount;
+            if (bunbo === 0) {
+                return 0;
+            }
+            const tmp = Math.round(this.correctCount / bunbo * 100 * 10);
+            return tmp / 10;
         }
     },
     methods: {
@@ -47,6 +85,7 @@ const app = {
             }
             if (this.mondai[this.kaitou.length] === sentakusi.hira) {
                 console.log("正解", sentakusi.hira);
+                this.correctCount++;
                 this.selectedSentakusi = null;
                 this.message = "正解！😆";
                 this.kaitou.push(sentakusi.sokki);
@@ -54,10 +93,13 @@ const app = {
                 canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
                     this.mondaiListIndex++;
+                    const isClear = this.mondaiListIndex >= mondaiList.length;
+                    if (isClear) {
+                        this.clearTime = performance.now() - startTime;
+                    }
                     setTimeout(() => {
-                        if (this.mondaiListIndex >= mondaiList.length) {
+                        if (isClear) {
                             this.scene = "result";
-                            // todo clear
                         }
                         else {
                             this.initMondai();
@@ -75,6 +117,7 @@ const app = {
             }
             else {
                 console.log("違う", sentakusi.hira);
+                this.missCount++;
                 this.selectedSentakusi = sentakusi;
                 this.message = `それは「${sentakusi.hira}」…😢`;
             }
@@ -165,6 +208,11 @@ const app = {
             
             this.initMondai();
             this.initSentakusiList();
+
+            this.correctCount = 0;
+            this.missCount = 0;
+            this.clearTime = 0;
+            startTime = performance.now();
         },
 
         initMondai() {
