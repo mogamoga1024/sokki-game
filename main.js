@@ -52,6 +52,9 @@ const app = {
                     shuffle(mondaiList);
                 }
             }
+            else if (course === "実践") {
+                // todo
+            }
             
             this.initMondai();
             this.initSentakusiList();

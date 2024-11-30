@@ -524,32 +524,35 @@ const 問題ぴゃ行 = [
     "ぴょこぴょこ",
 ];
 
-function 実践問題生成(needぱきゃ = true) {
+const 清音正規表現 = /^[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ]+$/;
+const 全部正規表現 = /^[あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわ|ぱぴぷぺぽ|きゃ|きゅ|きょ|しゃ|しゅ|しょ|ちゃ|ちゅ|ちょ|にゃ|にゅ|にょ|ひゃ|ひゅ|ひょ|みゃ|みゅ|みょ|りゃ|りゅ|りょ|ぴゃ|ぴゅ|ぴょ]+$/;
+
+function 実践問題生成(needぱきゃ) {
     let text = "";
 
     if (needぱきゃ) {
         if (Math.random() < 0.3) {
-            text = Array.from(問題きゃ系[randomInt(問題きゃ系.length)]);
+            text = 問題きゃ系[randomInt(問題きゃ系.length)];
         }
         else if (Math.random() < 0.08) {
-            text = Array.from(問題ぱ行[randomInt(問題ぱ行.length)]);
+            text = 問題ぱ行[randomInt(問題ぱ行.length)];
         }
         else if (Math.random() < 0.1) {
-            text = Array.from(問題ぴゃ行[randomInt(問題ぴゃ行.length)]);
+            text = 問題ぴゃ行[randomInt(問題ぴゃ行.length)];
         }
         else {
-            text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+            text = 問題あ系[randomInt(問題あ系.length)];
         }
     }
     else {
-        text = Array.from(問題あ系[randomInt(問題あ系.length)]);
+        text = 問題あ系[randomInt(問題あ系.length)];
     }
 
     const mondai = [];
 
     for (let i = 0; i < text.length; i++) {
         // 最後のindexではない かつ 次の文字が「ゃゅょ」の場合
-        if (i < text.length - 1 && /^(ゃ|ゅ|ょ)$/.test(text[i + 1])) {
+        if (needぱきゃ && i < text.length - 1 && /^(ゃ|ゅ|ょ)$/.test(text[i + 1])) {
             mondai.push(text[i] + text[i + 1]);
             i++; // ひとつ進める
             continue;
@@ -557,8 +560,18 @@ function 実践問題生成(needぱきゃ = true) {
         mondai.push(text[i]);
     }
 
-    // todo バリデーション
+    // バリデーション 別にいらないが念のため
+    if (
+        needぱきゃ && !全部正規表現.test(text) ||
+        !needぱきゃ && !清音正規表現.test(text)
+    ) {
+        console.error(`未対応の問題：${text}`);
+        実践問題生成(needぱきゃ);
+    }
 
     return mondai;
 }
 
+function 実践問題リスト生成(needぱきゃ) {
+    // todo
+}
