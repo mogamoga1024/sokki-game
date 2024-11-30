@@ -16,6 +16,7 @@
   font-size: 36px;
   user-select: none;
   -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 #app {

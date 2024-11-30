@@ -113,7 +113,7 @@ const app = {
                     // 連打防止
                     setTimeout(() => {
                         canClickSentakusi = true;
-                    }, 200);
+                    }, 100);
                 }
             }
             else {
@@ -133,12 +133,11 @@ const app = {
         },
 
         onClickTweet() {
-            // todo
             let game = `${gameConfig.type}${gameConfig.course}`;
             if (gameConfig.order !== "") {
                 game += `（${gameConfig.order}）`;
             }
-            const text = `早稲田式速記ゲームの${game}で成績は「S」、スコアは「114514」でした。`;
+            const text = `遊んで学べる早稲田式速記ゲームの${game}でランクは「${this.rank}」、スコアは「${this.score}」でした。`;
 
             const link = document.createElement("a");
             link.href = `https://twitter.com/intent/tweet?url=https://mogamoga1024.github.io/sokki-game/&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent("早稲田式速記")}`;
