@@ -29,6 +29,12 @@
     font-size: 0.7rem;
   }
 
+  #countdown {
+    margin-top: 2rem;
+    font-size: 6rem;
+    line-height: 6rem;
+  }
+
   #game-header {
     margin-top: 0.4rem;
   }

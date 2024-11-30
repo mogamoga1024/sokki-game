@@ -86,24 +86,24 @@ const app = {
         }
     },
     methods: {
-        onClickPlay(course, order, type) {
+        async onClickPlay(course, order, type) {
             console.log(course, order, type);
             gameConfig = {course, order, type};
 
             this.scene = "countdown";
-            this.countdownText = "3";
-            setTimeout(() => {
-                this.countdownText = "2";
+
+            const p = (func) => new Promise(resolve => {
                 setTimeout(() => {
-                    this.countdownText = "1";
-                    setTimeout(() => {
-                        this.countdownText = "GO!";
-                        setTimeout(() => {
-                            this.startGame(gameConfig);
-                        }, 600);
-                    }, 600);
+                    func();
+                    resolve();
                 }, 600);
-            }, 600);
+            });
+
+            this.countdownText = "3"
+            await p(() => this.countdownText = "2");
+            await p(() => this.countdownText = "1");
+            await p(() => this.countdownText = "GO!");
+            await p(() => this.startGame(gameConfig));
         },
 
         onClickRetire() {
