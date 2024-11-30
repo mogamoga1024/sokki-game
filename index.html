@@ -7,7 +7,7 @@
   <meta name="description" content="早稲田式速記の学習用ゲーム">
   <link rel="stylesheet" href="loading.css">
   <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="kaku.css">
+  <link rel="stylesheet" href="game.css">
   <link rel="stylesheet" href="result.css">
   <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
@@ -86,7 +86,7 @@
       </div>
     </template>
 
-    <template v-else-if="scene === 'kaku'">
+    <template v-else-if="scene === 'game'">
       <div id="game-header">
         <div id="retire-btn" @click="onClickRetire">
           🔙終わる
@@ -142,8 +142,8 @@
         </tr>
       </table>
       <div id="result-footer">
-        <div>終わる</div>
-        <div>続ける</div>
+        <div @click="onClickResultEnd">終わる</div>
+        <div @click="onClickResultTudukeru">続ける</div>
         <div>つぶやく</div>
       </div>
     </template>

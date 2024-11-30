@@ -7,7 +7,7 @@ let mondaiList = [];
 const app = {
     data() {
         return {
-            scene: "result", // top, kaku, result
+            scene: "result", // top, game, result
             sokkiTable: [],
 
             mondaiListIndex: 0,
@@ -30,7 +30,7 @@ const app = {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
 
-            this.scene = "kaku";
+            this.scene = "game";
 
             hiraList = 平仮名一覧(type);
             this.mondaiListIndex = 0;
@@ -91,6 +91,14 @@ const app = {
                 this.selectedSentakusi = sentakusi;
                 this.message = `それは「${sentakusi.hira}」…😢`;
             }
+        },
+
+        onClickResultEnd() {
+            this.scene = "top";
+        },
+
+        onClickResultTudukeru() {
+            // todo
         },
 
         initSokkiTable() {
