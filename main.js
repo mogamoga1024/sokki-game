@@ -1,6 +1,10 @@
 
 let canClickSentakusi = true;
 
+let gameConfig = {
+    course: "", order: "", type: ""
+};
+
 let hiraList = [];
 let mondaiList = [];
 
@@ -29,25 +33,8 @@ const app = {
     methods: {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
-
-            this.scene = "game";
-
-            hiraList = 平仮名一覧(type);
-            this.mondaiListIndex = 0;
-            if (course === "基礎") {
-                mondaiList = hiraList.map(hira => [hira]);
-                if (order === "ランダム") {
-                    shuffle(mondaiList);
-                }
-            }
-            else if (course === "実践") {
-                mondaiList = 実践問題リスト生成(type === "全部");
-            }
-
-            canClickSentakusi = true;
-            
-            this.initMondai();
-            this.initSentakusiList();
+            gameConfig = {course, order, type};
+            this.startGame(gameConfig);
         },
 
         onClickRetire() {
@@ -98,7 +85,7 @@ const app = {
         },
 
         onClickResultTudukeru() {
-            // todo
+            this.startGame(gameConfig);
         },
 
         initSokkiTable() {
@@ -143,12 +130,35 @@ const app = {
                 this.sokkiTable.push(sokkiRow);
             }
         },
+
+        startGame({course, order, type}) {
+            this.scene = "game";
+
+            hiraList = 平仮名一覧(type);
+            this.mondaiListIndex = 0;
+            if (course === "基礎") {
+                mondaiList = hiraList.map(hira => [hira]);
+                if (order === "ランダム") {
+                    shuffle(mondaiList);
+                }
+            }
+            else if (course === "実践") {
+                mondaiList = 実践問題リスト生成(type === "全部");
+            }
+
+            canClickSentakusi = true;
+            
+            this.initMondai();
+            this.initSentakusiList();
+        },
+
         initMondai() {
             this.message = "選んでね🤔";
             this.kaitou = [];
             this.mondai = mondaiList[this.mondaiListIndex];
             this.initSentakusiList();
         },
+
         initSentakusiList() {
             this.selectedSentakusi = null;
             const sentakusiList = [];
