@@ -1,6 +1,4 @@
 
-let canClickSentakusi = true;
-
 let gameConfig = {
     course: "", order: "", type: ""
 };
@@ -81,9 +79,6 @@ const app = {
         },
 
         onClickSentakusi(sentakusi) {
-            if (!canClickSentakusi) {
-                return;
-            }
             if (this.mondai[this.kaitou.length] === sentakusi.hira) {
                 console.log("正解", sentakusi.hira);
                 this.correctCount++;
@@ -91,7 +86,6 @@ const app = {
                 this.message = "正解！😆";
                 this.kaitou.push(sentakusi.sokki);
                 
-                canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
                     this.mondaiListIndex++;
                     const isClear = this.mondaiListIndex >= mondaiList.length;
@@ -105,15 +99,10 @@ const app = {
                         else {
                             this.initMondai();
                         }
-                        canClickSentakusi = true;
                     }, this.nextMondaiInterval);
                 }
                 else {
                     this.initSentakusiList();
-                    // 連打防止
-                    setTimeout(() => {
-                        canClickSentakusi = true;
-                    }, 100);
                 }
             }
             else {
@@ -204,8 +193,6 @@ const app = {
                 mondaiList = 実践問題リスト生成(type === "全部");
             }
 
-            canClickSentakusi = true;
-            
             this.initMondai();
             this.initSentakusiList();
 
