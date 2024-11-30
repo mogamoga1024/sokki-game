@@ -5,6 +5,7 @@ let mondaiCourse = "";
 let mondaiType = "";
 
 let hiraList = [];
+let mondaiList = [];
 
 const app = {
     data() {
@@ -12,7 +13,7 @@ const app = {
             mode: "top", // top, kaku
             sokkiTable: [],
 
-            hiraListIndex: 0,
+            mondaiListIndex: 0,
             mondai: [],
             kaitou: [],
             message: "選んでね🤔",
@@ -26,7 +27,7 @@ const app = {
     computed: {
         sintyoku() {
             if (mondaiCourse === "基礎") {
-                return `${this.hiraListIndex}/${hiraList.length}`;
+                return `${this.mondaiListIndex}/${mondaiList.length}`;
             }
             else if (mondaiCourse === "実践") {
                 // todo
@@ -44,9 +45,12 @@ const app = {
             this.mode = "kaku";
 
             hiraList = 平仮名一覧(mondaiType);
-            this.hiraListIndex = 0;
-            if (order === "ランダム") {
-                shuffle(hiraList);
+            this.mondaiListIndex = 0;
+            if (course === "基礎") {
+                mondaiList = hiraList.map(hira => [hira]);
+                if (order === "ランダム") {
+                    shuffle(mondaiList);
+                }
             }
             
             this.initMondai();
@@ -70,8 +74,8 @@ const app = {
                 canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
                     if (mondaiCourse === "基礎") {
-                        this.hiraListIndex++;
-                        if (this.hiraListIndex >= hiraList.length) {
+                        this.mondaiListIndex++;
+                        if (this.mondaiListIndex >= mondaiList.length) {
                             // todo clear
                         }
                     }
@@ -142,7 +146,7 @@ const app = {
             this.kaitou = [];
             
             if (mondaiCourse === "基礎") {
-                this.mondai = [hiraList[this.hiraListIndex]];
+                this.mondai = mondaiList[this.mondaiListIndex];
             }
             else if (mondaiCourse === "実践") {
                 this.mondai = 実践問題生成(mondaiType === "全部");
