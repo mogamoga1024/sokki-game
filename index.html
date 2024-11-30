@@ -89,7 +89,7 @@
 
     <template v-else-if="scene === 'countdown'">
       <div id="countdown">{{countdownText}}</div>
-      <div id="pc-hint" :style="{'display': isPC ? 'block' : 'none'}">※PCはhjklキーでも選択できます</div>
+      <div id="pc-hint" :style="{'display': isPC ? 'block' : 'none'}">※PCはASDFキーやJKL+キーでも選択可</div>
     </template>
 
     <template v-else-if="scene === 'game'">
@@ -111,7 +111,7 @@
       <div id="message">{{message}}</div>
 
       <div class="sentakusi-container">
-        <template v-for="(s, index) in sentakusiList">
+        <template v-for="s in sentakusiList">
           <div class="sentakusi"
                :class="{selected: selectedSentakusi?.sokki === s.sokki}"
                v-html="s.sokki"

@@ -39,6 +39,36 @@ const app = {
         this.isPC = !isMobileByUa && !isMobileByClientHint;
 
         this.initSokkiTable();
+
+        if (this.isPC) {
+            window.addEventListener("keydown", e => {
+                if (e.repeat) {
+                    return;
+                }
+                if (this.scene !== "game") {
+                    return;
+                }
+
+                switch (e.key) {
+                    case "a": case "A": case "j": case "J": {
+                        this.onClickSentakusi(this.sentakusiList[0]);
+                        break;
+                    }
+                    case "s": case "S": case "k": case "K": {
+                        this.onClickSentakusi(this.sentakusiList[1]);
+                        break;
+                    }
+                    case "d": case "D": case "l": case "L": {
+                        this.onClickSentakusi(this.sentakusiList[2]);
+                        break;
+                    }
+                    case "f": case "F": case ";": case "+": {
+                        this.onClickSentakusi(this.sentakusiList[3]);
+                        break;
+                    }
+                }
+            });
+        }
     },
     computed: {
         sintyoku() {
@@ -92,7 +122,7 @@ const app = {
 
             this.scene = "countdown";
 
-            const p = (func) => new Promise(resolve => {
+            const p = func => new Promise(resolve => {
                 setTimeout(() => {
                     func();
                     resolve();
