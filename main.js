@@ -89,7 +89,12 @@ const app = {
         },
 
         onClickTweet() {
-            const text = "ほげほげ！"; // todo
+            // todo
+            let game = `${gameConfig.type}${gameConfig.course}`;
+            if (gameConfig.order !== "") {
+                game += `（${gameConfig.order}）`;
+            }
+            const text = `早稲田式速記ゲームの${game}で成績は「S」、スコアは「114514」でした。`;
 
             const link = document.createElement("a");
             link.href = `https://twitter.com/intent/tweet?url=https://mogamoga1024.github.io/sokki-game/&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent("早稲田式速記")}`;
