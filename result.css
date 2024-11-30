@@ -1,3 +1,25 @@
 
+#rank-contaner {
+  margin-top: 1rem;
+}
 
+#rank-contaner div {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+#rank {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+#result-table {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#result-table td:nth-of-type(1) {
+  padding-right: 1rem;
+}
 
