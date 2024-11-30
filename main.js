@@ -7,7 +7,7 @@ let mondaiList = [];
 const app = {
     data() {
         return {
-            scene: "top", // top, kaku, result
+            scene: "result", // top, kaku, result
             sokkiTable: [],
 
             mondaiListIndex: 0,
