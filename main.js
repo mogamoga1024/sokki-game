@@ -88,6 +88,16 @@ const app = {
             this.startGame(gameConfig);
         },
 
+        onClickTweet() {
+            const text = "ほげほげ！"; // todo
+
+            const link = document.createElement("a");
+            link.href = `https://twitter.com/intent/tweet?url=https://mogamoga1024.github.io/sokki-game/&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent("早稲田式速記")}`;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.click();
+        },
+
         initSokkiTable() {
             const hiraTable = [
                 ["あ", "い", "う", "え", "お"],
