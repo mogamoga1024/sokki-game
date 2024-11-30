@@ -28,6 +28,7 @@ const app = {
             selectedSentakusi: null,
             nextMondaiInterval: 400,
 
+            resultTitle: "",
             clearTime: 0,
             correctCount: 0,
             missCount: 0,
@@ -160,6 +161,13 @@ const app = {
                     setTimeout(() => {
                         if (isClear) {
                             this.scene = "result";
+
+                            let resultTitle = `${gameConfig.type}${gameConfig.course}`;
+                            if (gameConfig.order !== "") {
+                                resultTitle += `（${gameConfig.order}）`;
+                            }
+                            this.resultTitle = resultTitle;
+
                             const nigateList = Array.from(nigateCountMap).sort((a, b) => b[1] - a[1]).map(a => a[0]);
                             if (nigateList.length === 0) {
                                 this.nigate = "ない！";
@@ -216,11 +224,7 @@ const app = {
             if (!canClickResultBtn) {
                 return;
             }
-            let game = `${gameConfig.type}${gameConfig.course}`;
-            if (gameConfig.order !== "") {
-                game += `（${gameConfig.order}）`;
-            }
-            const text = `遊んで学べる早稲田式速記ゲームの${game}でランクは「${this.rank}」、スコアは「${this.score}」でした。`;
+            const text = `遊んで学べる早稲田式速記ゲームの${this.resultTitle}でランクは「${this.rank}」、スコアは「${this.score}」でした。`;
 
             const link = document.createElement("a");
             link.href = `https://twitter.com/intent/tweet?url=https://mogamoga1024.github.io/sokki-game/&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent("早稲田式速記")}`;

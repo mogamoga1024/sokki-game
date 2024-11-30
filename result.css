@@ -1,16 +1,13 @@
 
-#rank-contaner {
+#result-title {
   margin-top: 1rem;
-}
-
-#rank-contaner div {
-  width: fit-content;
-  margin: 0 auto;
+  text-align: center;
 }
 
 #rank {
   font-size: 5rem;
   line-height: 5rem;
+  text-align: center;
 }
 
 #result-table {

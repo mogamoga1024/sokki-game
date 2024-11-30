@@ -56,5 +56,9 @@
     line-height: 180px;
     font-size: 1.4rem;
   }
+
+  #result-title {
+    font-size: 0.85rem;
+  }
 }
 

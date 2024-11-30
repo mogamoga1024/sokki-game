@@ -122,10 +122,8 @@
     </template>
 
     <template v-else-if="scene === 'result'">
-      <div id="rank-contaner">
-        <div>ランク</div>
-        <div id="rank">{{rank}}</div>
-      </div>
+      <div id="result-title">{{resultTitle}}</div>
+      <div id="rank">{{rank}}</div>
       <table id="result-table">
         <tr>
           <td>スコア</td>
