@@ -16,7 +16,7 @@
 <body>
   <div id="loading">ロード中…</div>
   <div id="app" v-cloak style="display: none;">
-    <template v-if="mode === 'top'">
+    <template v-if="scene === 'top'">
       <h1>遊んで学べる早稲田式速記ゲーム</h1>
       <div class="description">
         清音は「あ」から「ん」のこと☺<br>
@@ -85,7 +85,7 @@
       </div>
     </template>
 
-    <template v-else-if="mode === 'kaku'">
+    <template v-else-if="scene === 'kaku'">
       <div id="game-header">
         <div id="retire-btn" @click="onClickRetire">
           🔙終わる

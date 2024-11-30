@@ -7,7 +7,7 @@ let mondaiList = [];
 const app = {
     data() {
         return {
-            mode: "top", // top, kaku
+            scene: "top", // top, kaku
             sokkiTable: [],
 
             mondaiListIndex: 0,
@@ -30,7 +30,7 @@ const app = {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
 
-            this.mode = "kaku";
+            this.scene = "kaku";
 
             hiraList = 平仮名一覧(type);
             this.mondaiListIndex = 0;
@@ -49,7 +49,7 @@ const app = {
         },
 
         onClickRetire() {
-            this.mode = "top";
+            this.scene = "top";
         },
 
         onClickSentakusi(sentakusi) {
