@@ -44,8 +44,16 @@ const app = {
             return Math.floor(s * 100);
         },
         rank() {
-            // todo
-            return "S";
+            if (this.score > 10000) {
+                return "S";
+            }
+            else if (this.score > 7000) {
+                return "A";
+            }
+            else if (this.score > 4000) {
+                return "B";
+            }
+            return "C";
         },
         displayClearTime() {
             const tmp = Math.round(this.clearTime / 1000 * 10);
