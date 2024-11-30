@@ -84,14 +84,23 @@ const app = {
             return Math.floor(s * 100);
         },
         rank() {
-            if (this.score > 10000) {
+            if (this.score >= 8000) {
                 return "S";
             }
-            else if (this.score > 7000) {
+            else if (this.score >= 7000) {
+                return "A+";
+            }
+            else if (this.score >= 6000) {
                 return "A";
             }
-            else if (this.score > 4000) {
+            else if (this.score >= 5000) {
+                return "B+";
+            }
+            else if (this.score >= 4000) {
                 return "B";
+            }
+            else if (this.score >= 3000) {
+                return "C+";
             }
             return "C";
         },
@@ -116,24 +125,10 @@ const app = {
         }
     },
     methods: {
-        async onClickPlay(course, order, type) {
+        onClickPlay(course, order, type) {
             console.log(course, order, type);
             gameConfig = {course, order, type};
-
-            this.scene = "countdown";
-
-            const p = func => new Promise(resolve => {
-                setTimeout(() => {
-                    func();
-                    resolve();
-                }, 600);
-            });
-
-            this.countdownText = "3"
-            await p(() => this.countdownText = "2");
-            await p(() => this.countdownText = "1");
-            await p(() => this.countdownText = "GO!");
-            await p(() => this.startGame(gameConfig));
+            this.startCountdown();
         },
 
         onClickRetire() {
@@ -195,7 +190,7 @@ const app = {
             if (!canClickResultBtn) {
                 return;
             }
-            this.startGame(gameConfig);
+            this.startCountdown();
         },
 
         onClickTweet() {
@@ -258,7 +253,25 @@ const app = {
             }
         },
 
-        startGame({course, order, type}) {
+        async startCountdown() {
+            this.scene = "countdown";
+
+            const p = func => new Promise(resolve => {
+                setTimeout(() => {
+                    func();
+                    resolve();
+                }, 600);
+            });
+
+            this.countdownText = "3"
+            await p(() => this.countdownText = "2");
+            await p(() => this.countdownText = "1");
+            await p(() => this.countdownText = "GO!");
+            await p(() => this.startGame());
+        },
+
+        startGame() {
+            const {course, order, type} = gameConfig;
             this.scene = "game";
 
             hiraList = 平仮名一覧(type);
