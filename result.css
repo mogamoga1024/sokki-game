@@ -23,3 +23,15 @@
   padding-right: 1rem;
 }
 
+#result-footer {
+  display: flex;
+  max-width: 400px;
+  margin: 0.5rem auto 0;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+#result-footer div {
+  cursor: pointer;
+}
