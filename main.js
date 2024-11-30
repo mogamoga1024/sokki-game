@@ -22,6 +22,7 @@ const app = {
             message: "選んでね🤔",
             sentakusiList: [],
             selectedSentakusi: null,
+            nextMondaiInterval: 400,
 
             clearTime: 0,
             correctCount: 0,
@@ -95,7 +96,7 @@ const app = {
                     this.mondaiListIndex++;
                     const isClear = this.mondaiListIndex >= mondaiList.length;
                     if (isClear) {
-                        this.clearTime = performance.now() - startTime;
+                        this.clearTime = performance.now() - startTime - this.nextMondaiInterval * (mondaiList.length - 1);
                     }
                     setTimeout(() => {
                         if (isClear) {
@@ -105,7 +106,7 @@ const app = {
                             this.initMondai();
                         }
                         canClickSentakusi = true;
-                    }, 400);
+                    }, this.nextMondaiInterval);
                 }
                 else {
                     this.initSentakusiList();
