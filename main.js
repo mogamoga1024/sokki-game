@@ -82,7 +82,7 @@ const app = {
                     setTimeout(() => {
                         this.initMondai();
                         canClickSentakusi = true;
-                    }, 800);
+                    }, 400);
                 }
                 else {
                     this.initSentakusiList();
