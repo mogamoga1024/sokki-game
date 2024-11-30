@@ -43,6 +43,8 @@ const app = {
             else if (course === "実践") {
                 mondaiList = 実践問題リスト生成(type === "全部");
             }
+
+            canClickSentakusi = true;
             
             this.initMondai();
             this.initSentakusiList();
@@ -65,12 +67,14 @@ const app = {
                 canClickSentakusi = false;
                 if (this.kaitou.length === this.mondai.length) {
                     this.mondaiListIndex++;
-                    if (this.mondaiListIndex >= mondaiList.length) {
-                        // todo clear
-                        this.scene = "result";
-                    }
-                    else setTimeout(() => {
-                        this.initMondai();
+                    setTimeout(() => {
+                        if (this.mondaiListIndex >= mondaiList.length) {
+                            this.scene = "result";
+                            // todo clear
+                        }
+                        else {
+                            this.initMondai();
+                        }
                         canClickSentakusi = true;
                     }, 400);
                 }
