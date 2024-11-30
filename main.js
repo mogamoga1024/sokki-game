@@ -8,10 +8,12 @@ let mondaiList = [];
 
 let startTime = 0;
 
+let canClickResultBtn = false;
+
 const app = {
     data() {
         return {
-            scene: "result", // top, game, result
+            scene: "top", // top, game, result
             sokkiTable: [],
 
             mondaiListIndex: 0,
@@ -87,6 +89,11 @@ const app = {
         },
 
         onClickSentakusi(sentakusi) {
+            // 既にクリアしているなら何もしない
+            if (this.mondaiListIndex >= mondaiList.length) {
+                return;
+            }
+
             if (this.mondai[this.kaitou.length] === sentakusi.hira) {
                 console.log("正解", sentakusi.hira);
                 this.correctCount++;
@@ -103,6 +110,10 @@ const app = {
                     setTimeout(() => {
                         if (isClear) {
                             this.scene = "result";
+                            // リザルト画面のボタンを思わぬ形で押してほしくないため
+                            setTimeout(() => {
+                                canClickResultBtn = true;
+                            }, 800);
                         }
                         else {
                             this.initMondai();
@@ -122,14 +133,23 @@ const app = {
         },
 
         onClickResultEnd() {
+            if (!canClickResultBtn) {
+                return;
+            }
             this.scene = "top";
         },
 
         onClickResultTudukeru() {
+            if (!canClickResultBtn) {
+                return;
+            }
             this.startGame(gameConfig);
         },
 
         onClickTweet() {
+            if (!canClickResultBtn) {
+                return;
+            }
             let game = `${gameConfig.type}${gameConfig.course}`;
             if (gameConfig.order !== "") {
                 game += `（${gameConfig.order}）`;
@@ -204,6 +224,7 @@ const app = {
             this.initMondai();
             this.initSentakusiList();
 
+            canClickResultBtn = false;
             this.correctCount = 0;
             this.missCount = 0;
             this.clearTime = 0;
