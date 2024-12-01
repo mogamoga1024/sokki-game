@@ -1,5 +1,5 @@
 # sokki-game
 
-遊んで学べる早稲田式速記ゲーム
+四択で覚える早稲田式速記アプリ
 
 https://mogamoga1024.github.io/sokki-game/
