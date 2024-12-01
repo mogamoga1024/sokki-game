@@ -70,11 +70,17 @@ h2 {
   margin: 0 auto;
   padding: 8px 16px;
   color: #fff;
-  background-color: #268bde;
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.play-btn.easy {
+  background-color: #268bde;
+}
+.play-btn.hard {
+  background-color: #d9534f;
 }
 
 .play-btn:not(:first-of-type) {
@@ -82,13 +88,19 @@ h2 {
 }
 
 @media (any-hover: hover) {
-  .play-btn:hover {
+  .play-btn.easy:hover {
     background-color: #005bb5;
+  }
+  .play-btn.hard:hover {
+    background-color: #c9302c;
   }
 }
 @media (any-hover: none) {
-  .play-btn:active {
+  .play-btn.easy:active {
     background-color: #005bb5;
+  }
+  .play-btn.hard:active {
+    background-color: #c9302c;
   }
 }
 

@@ -45,20 +45,20 @@
           <legend>基礎</legend>
           <fieldset class="kiso-fieldset">
             <legend>五十音順</legend>
-            <div class="play-btn" @click="onClickPlay('基礎', '五十音', '清音')">清音🥳</div>
-            <div class="play-btn" @click="onClickPlay('基礎', '五十音', '特殊')">特殊🥴</div>
+            <div class="play-btn easy" @click="onClickPlay('基礎', '五十音', '清音')">清音🥳</div>
+            <div class="play-btn hard" @click="onClickPlay('基礎', '五十音', '特殊')">特殊🥴</div>
           </fieldset>
           <fieldset class="kiso-fieldset">
             <legend>ランダム</legend>
-            <div class="play-btn" @click="onClickPlay('基礎', 'ランダム', '清音')">清音😀</div>
-            <div class="play-btn" @click="onClickPlay('基礎', 'ランダム', '特殊')">特殊😖</div>
+            <div class="play-btn easy" @click="onClickPlay('基礎', 'ランダム', '清音')">清音😀</div>
+            <div class="play-btn hard" @click="onClickPlay('基礎', 'ランダム', '特殊')">特殊😖</div>
           </fieldset>
         </fieldset>
 
         <fieldset id="jissen">
           <legend>実践</legend>
-          <div class="play-btn" @click="onClickPlay('実践', '', '清音')">清音😆</div>
-          <div class="play-btn" @click="onClickPlay('実践', '', '全部')">全部😱</div>
+          <div class="play-btn easy" @click="onClickPlay('実践', '', '清音')">清音😆</div>
+          <div class="play-btn hard" @click="onClickPlay('実践', '', '全部')">全部😱</div>
         </fieldset>
       </div>
       
