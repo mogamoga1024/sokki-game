@@ -1,4 +1,6 @@
 
+let prevScene = "";
+
 let gameConfig = {
     course: "", order: "", type: ""
 };
@@ -72,6 +74,31 @@ const app = {
                 }
             });
         }
+
+        window.addEventListener("popstate", () => {
+            // 進むボタンが押されたとき
+            if (this.scene === "top") {
+                if (prevScene === "countdown" || prevScene === "game") {
+                    this.startCountdown();
+                }
+                else if (prevScene === "result") {
+                    this.scene = "result";
+                }
+            }
+            // 戻るボタンが押されたとき
+            else if (
+                this.scene === "countdown" ||
+                this.scene === "game" ||
+                this.scene === "result"
+            ) {
+                this.scene = "top";
+            }
+        });
+    },
+    watch: {
+        scene(_, oldScene) {
+            prevScene = oldScene;
+        }
     },
     computed: {
         sintyoku() {
@@ -130,12 +157,15 @@ const app = {
     methods: {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
+
+            history.pushState(null, "", "/game");
+
             gameConfig = {course, order, type};
             this.startCountdown();
         },
 
         onClickRetire() {
-            this.scene = "top";
+            history.back();
         },
 
         onClickSentakusi(sentakusi) {
@@ -210,7 +240,7 @@ const app = {
             if (!canClickResultBtn) {
                 return;
             }
-            this.scene = "top";
+            history.back();
         },
 
         onClickResultTudukeru() {
@@ -279,8 +309,12 @@ const app = {
         async startCountdown() {
             this.scene = "countdown";
 
-            const p = func => new Promise(resolve => {
+            const p = func => new Promise((resolve, reject) => {
                 setTimeout(() => {
+                    if (this.scene !== "countdown") {
+                        reject("countdown中にsceneが変化した");
+                        return;
+                    }
                     func();
                     resolve();
                 }, 600);
