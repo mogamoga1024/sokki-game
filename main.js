@@ -158,7 +158,7 @@ const app = {
         onClickPlay(course, order, type) {
             console.log(course, order, type);
 
-            history.pushState(null, "", "./game");
+            history.pushState(null, "", "");
 
             gameConfig = {course, order, type};
             this.startCountdown();
